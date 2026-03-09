@@ -1,0 +1,99 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background: linear-gradient(135deg, #d32f2f, #b71c1c); color: white; padding: 16px; min-height: 100vh; direction: rtl; transition: background 0.3s; display: flex; justify-content: center; align-items: flex-start; padding-bottom: 50px;}
+body.night-mode { background: linear-gradient(135deg, #121212, #1e1e1e); color: #e0e0e0; }
+body.french { direction: ltr; font-family: 'Roboto', sans-serif; }
+
+/* Login Styles */
+#login { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 10000; backdrop-filter: blur(5px); }
+.login-box { background: #ef5350; padding: 40px; border-radius: 15px; text-align: center; width: 90%; max-width: 350px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.login-box h2 { margin-bottom: 20px; }
+.login-box input { width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 8px; font-size: 16px; text-align: center; }
+.login-box button { width: 100%; padding: 12px; background: #b71c1c; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.login-box button:hover { background: #c62828; }
+.error { color: #ffccbc; margin-top: 10px; font-size: 14px; min-height: 20px; }
+
+#app { display: none; width: 100%; max-width: 1000px; margin-top: 20px; }
+.container { background: white; padding: 24px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); position: relative; transition: background 0.3s; }
+body.night-mode .container { background: #2d2d2d; color: #ffffff; }
+
+.diar-logo { position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10c-40 0-50 40-50 40s10 40 50 40 50-40 50-40S90 10 50 10" fill="white"/></svg>') no-repeat center; background-size: contain; }
+body.french .diar-logo { right: auto; left: 20px; }
+
+h1 { text-align: center; color: #d32f2f; margin: 0 0 20px 0; font-size: 28px; font-weight: 800; }
+body.night-mode h1 { color: #ff6b6b; }
+
+/* Inputs Section */
+.inputs-section { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; background: #f9f9f9; padding: 20px; border-radius: 15px; margin-bottom: 25px; border: 1px solid #eee; }
+body.night-mode .inputs-section { background: #333; border-color: #444; }
+
+.input-group { margin-bottom: 5px; }
+label { display: block; margin-bottom: 6px; font-weight: 700; color: #333; font-size: 13px; }
+body.night-mode label { color: #ddd; }
+input, select { width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 15px; direction: ltr; text-align: right; font-weight: 600; background: #fff; color: #333; transition: 0.3s; }
+input:focus, select:focus { border-color: #d32f2f; outline: none; }
+body.french input, body.french select { text-align: left; }
+body.night-mode input, body.night-mode select { background: #3a3a3a; border-color: #555; color: white; }
+
+/* New Layout: Split Bikes Columns */
+.bikes-container { display: flex; gap: 20px; margin-bottom: 25px; flex-wrap: wrap; }
+.bike-column { flex: 1; min-width: 300px; background: #f0f0f0; border-radius: 15px; padding: 15px; max-height: 500px; overflow-y: auto; border: 1px solid #ddd; }
+body.night-mode .bike-column { background: #252525; border-color: #444; }
+
+.column-header { text-align: center; font-weight: 800; margin-bottom: 15px; padding: 10px; border-radius: 8px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Right Column (No Down Payment) */
+.col-right .column-header { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+
+/* Left Column (With Down Payment) */
+.col-left .column-header { background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; }
+
+.bike-card { 
+  background: white; padding: 15px; margin-bottom: 10px; border-radius: 10px; cursor: pointer; 
+  border-right: 5px solid transparent; transition: all 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center;
+}
+body.night-mode .bike-card { background: #333; color: #eee; }
+
+.bike-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+/* Card Styles based on column */
+.col-right .bike-card { border-right-color: #4caf50; }
+.col-left .bike-card { border-right-color: #ff9800; }
+body.french .bike-card { border-right: none; border-left: 5px solid transparent; }
+body.french .col-right .bike-card { border-left-color: #4caf50; }
+body.french .col-left .bike-card { border-left-color: #ff9800; }
+
+.bike-name { font-weight: 700; font-size: 16px; color: #333; }
+body.night-mode .bike-name { color: #fff; }
+.bike-price { font-size: 14px; color: #666; font-weight: 600; }
+body.night-mode .bike-price { color: #aaa; }
+
+.bike-badge { 
+  font-size: 11px; padding: 4px 8px; border-radius: 20px; font-weight: bold; color: white; white-space: nowrap; margin-right: 10px;
+}
+.badge-green { background: #4caf50; }
+.badge-orange { background: #ff9800; }
+
+/* Result Box */
+#result { margin-top: 20px; padding: 25px; border-radius: 16px; text-align: center; font-size: 17px; font-weight: 700; min-height: 120px; display: flex; flex-direction: column; justify-content: center; align-items: center; line-height: 1.8; gap: 8px; transition: all 0.3s ease; border: 2px solid transparent; }
+#result.default { background: #f5f5f5; color: #777; border-color: #ddd; }
+#result.success { background: #e8f5e9; border-color: #a5d6a7; color: #2e7d32; }
+#result.warning { background: #fff8e1; border-color: #ffe082; color: #f57f17; } 
+
+.result-detail-row { display: flex; justify-content: space-between; width: 100%; border-bottom: 1px dashed rgba(0,0,0,0.1); padding: 5px 0; }
+.result-label { font-weight: 600; opacity: 0.8; }
+.result-value { font-weight: 800; direction: ltr; }
+
+/* Other UI Elements */
+.language-switcher { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.9); border-radius: 20px; padding: 5px; display: flex; gap: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+body.french .language-switcher { left: auto; right: 20px; }
+.lang-btn { padding: 8px 15px; border: none; border-radius: 15px; cursor: pointer; font-size: 12px; font-weight: 700; transition: all 0.3s; background: transparent; color: #555; }
+.lang-btn.active { background: #d32f2f; color: white; }
+
+.footer { text-align: center; margin-top: 20px; font-size: 13px; color: #666; padding-top: 15px; border-top: 1px solid #eee; }
+body.night-mode .footer { border-color: #444; color: #999; }
+
+/* === Chatbase Control === */
+.chatbase-chatbot-container { display: none !important; }
+body.logged-in .chatbase-chatbot-container { display: block !important; }
+
+@media print { body * { visibility: hidden; } #printArea, #printArea * { visibility: visible; } #printArea { position: absolute; left: 0; top: 0; width: 100%; } }
