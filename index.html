@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>دراجتي - محاكي التقسيط | Diar Dzair</title>
+  <!-- ربطنا ملف الستايل هنا -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div id="login">
+    <div class="login-box">
+      <h2 data-i18n="password">كلمة المرور</h2>
+      <div class="error" id="loginError" style="display:none;" data-i18n="wrongPassword">كلمة المرور غير صحيحة!</div>
+      <input type="password" id="pw" placeholder="كلمة المرور" data-i18n-placeholder="enterPassword">
+      <button data-i18n="pressEnter">دخول</button>
+    </div>
+  </div>
+
+  <!-- Main Application -->
+  <div id="app">
+    <div class="container">
+      <div class="diar-logo"></div>
+      
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('ar')">العربية</button>
+        <button class="lang-btn" onclick="switchLanguage('fr')">Français</button>
+      </div>
+      
+      <h1 data-i18n="title">دراجتي 🛵</h1>
+      
+      <!-- Inputs Section -->
+      <div class="inputs-section">
+        <div class="input-group">
+          <label data-i18n="salaryLabel">المرتب الشهري (دج)</label>
+          <input type="number" id="salary" placeholder="مثال: 50000" oninput="renderBikeLists()" />
+        </div>
+        <div class="input-group">
+          <label data-i18n="debtsLabel">الديون الحالية (دج)</label>
+          <input type="number" id="debts" value="0" placeholder="0" oninput="renderBikeLists()" />
+        </div>
+        <div class="input-group">
+          <label data-i18n="allowanceLabel">المنح المردودية (دج)</label>
+          <input type="number" id="allowance" value="0" placeholder="0" oninput="renderBikeLists()" />
+        </div>
+        <div class="input-group">
+          <label data-i18n="allowancePeriodLabel">فترة المنحة</label>
+          <select id="allowancePeriod" onchange="renderBikeLists()">
+            <option value="1" data-i18n="monthly">شهري</option>
+            <option value="3" data-i18n="every3Months">كل 3 أشهر</option>
+            <option value="6" data-i18n="every6Months">كل 6 أشهر</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label data-i18n="bankLabel">البنك</label>
+          <select id="bank" onchange="renderBikeLists()">
+            <option value="salama" data-i18n="bankSalama">بنك السلام</option>
+            <option value="baraka" data-i18n="bankBaraka">بنك البركة</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label data-i18n="durationLabel">مدة التقسيط</label>
+          <select id="duration" onchange="renderBikeLists()">
+            <option value="60">60 شهر</option>
+            <option value="48">48 شهر</option>
+            <option value="36">36 شهر</option>
+            <option value="24">24 شهر</option>
+            <option value="12">12 شهر</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Split Columns for Bikes -->
+      <div class="bikes-container">
+        <!-- Right Column: Eligible without down payment -->
+        <div class="bike-column col-right" id="col-eligible">
+          <div class="column-header" data-i18n="eligibleHeader">✅ دراجات بدون دفعة أولية</div>
+          <div id="list-eligible"></div>
+        </div>
+        
+        <!-- Left Column: Requires down payment -->
+        <div class="bike-column col-left" id="col-partial">
+          <div class="column-header" data-i18n="partialHeader">💰 دراجات تتطلب مساهمة</div>
+          <div id="list-partial"></div>
+        </div>
+      </div>
+
+      <!-- Result Box -->
+      <div id="result" class="default">
+        <div data-i18n="resultPlaceholder">اختر دراجة من القائمة لعرض تفاصيل المحاكاة</div>
+      </div>
+
+      <div class="footer">
+        © 2025 <span data-i18n="appName">دراجتي</span> — Diar Dzair
+      </div>
+    </div>
+  </div>
+
+  <div id="printArea" style="display: none;"></div>
+
+  <!-- ربطنا ملف الجافاسكريبت قبل الشات بوت -->
+  <script src="script.js"></script>
+
+  <!-- Chatbase Script (External) -->
+  <script src="https://www.chatbase.co/embed.min.js" chatbotId="I41PK4rKohu-WBYMXE7gQ" defer></script>
+</body>
+</html>
